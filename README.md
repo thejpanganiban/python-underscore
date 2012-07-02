@@ -28,14 +28,16 @@ It's currently under development and you can contribute.
 
 ###each
 
-    _.each(sequence, function)
+A method for iterating through a sequence.
 
-Tested to support sequences (but not dictionaries yet).
+    _.each(sequence, function)
 
     _.each([1,2,3,4,5], lambda x: x + 1)
     > [2,3,4,5,6]
     
 ###mixin
+
+A method for extending the underscore object
 
     mixin(<dictionary_of_methods>)
 
@@ -50,6 +52,33 @@ A method for extending underscore.
 
     _.my_method(1,2)
     > 3
+
+###filter
+
+A method for filtering items from the list
+
+    _.filter(sequence, function)
+
+    _.filter([1,2,3,4,5], lambda x: x % 2 == 0)
+    > [2,4]
+
+###chain
+
+A method for chaining methods. (Wrap with parens to enable multi-lines)
+
+    _.chain(value)...
+    _(value).chain()
+
+    (_.chain([1,2,3,4,5])
+      .each(lambda x: x + 1)
+      .filter(lambda x: x % 2 == 0)
+      .value())
+    > [2,4,6]
+
+###value
+
+Method for returning the value. (Used when chaining)
+
 
 
 Contributing
