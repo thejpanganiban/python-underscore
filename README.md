@@ -24,7 +24,7 @@ How to Use
 Methods
 -------
 
-It's currently under development at the moment.
+It's currently under development and you can contribute.
 
 ###each
 
