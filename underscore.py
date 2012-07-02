@@ -19,6 +19,9 @@ class UnderscoreObject(object):
   def each(self, func):
     return [func(item) for item in self.seq]
 
+  def filter(self, func):
+    return [item for item in self.seq if func(item)]
+
 
 class Underscore(object):
 
@@ -52,3 +55,6 @@ class Underscore(object):
 
   def each(self, seq, func):
     return self.klass(seq).each(func)
+
+  def filter(self, seq, func):
+    return self.klass(seq).filter(func)

@@ -29,6 +29,14 @@ class UnderscoreTestCase(unittest.TestCase):
     # Test OOP-style
     self.assertEqual(self._(my_seq).each(lambda x: x + 2), [3,4,5,6,7])
 
+  def test_filter(self):
+    my_seq = [1,2,3,4,5]
+    self.assertTrue(self._.filter)
+    # Test functional-style
+    self.assertEqual(self._.filter(my_seq, lambda x: x % 2 == 0), [2,4])
+    # Test OOP-style
+    self.assertEqual(self._(my_seq).filter(lambda x: x % 2 == 0), [2,4])
+
 
 if __name__ == '__main__':
   unittest.main()
