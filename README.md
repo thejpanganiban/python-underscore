@@ -1,7 +1,7 @@
 Python Underscore
 =================
 
-A python port of Underscore.js.
+A python port of [Underscore.js][underscore].
 
 Current Status
 --------------
@@ -65,4 +65,10 @@ It is best to write a test for each feature.
 Author
 ------
 
-You can contact me via my email: me@jpanganiban.com
+You can contact me via my email: [me@jpanganiban.com][mail]
+or on twitter: [@jpanganiban][twitter]
+
+
+[underscore]: http://underscorejs.org/
+[mail]: mailto:me@jpanganiban.com
+[twitter]: me@jpanganiban.com
