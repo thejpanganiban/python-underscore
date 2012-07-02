@@ -41,7 +41,7 @@ Tested to support sequences (but not dictionaries yet).
 
 A method for extending underscore.
 
-    def util_method(self, x, y):
+    def util_method(x, y):
       return x + y
 
     _.mixin({
@@ -51,8 +51,6 @@ A method for extending underscore.
     _.my_method(1,2)
     > 3
 
-Do note that in each method, the explicit 'self' argument has
-to be there.
 
 Contributing
 ------------

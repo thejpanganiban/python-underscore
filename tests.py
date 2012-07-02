@@ -12,7 +12,7 @@ class UnderscoreTestCase(unittest.TestCase):
 
   def test_mixins(self):
 
-    def test_method(self, x, y):
+    def test_method(x, y):
       return x + y
 
     self._.mixin({

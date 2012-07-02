@@ -9,9 +9,9 @@ class UnderscoreObject(object):
   kwargs = None
 
   def __init__(self, *args, **kwargs):
-    # Get our sequence
-    if isinstance(args[0], collections.Iterable):
-      self.seq = args[0]
+    if args:
+      if isinstance(args[0], collections.Iterable):
+        self.seq = args[0]
 
     self.args = args
     self.kwargs = kwargs
@@ -45,12 +45,8 @@ class Underscore(object):
     """
     self.mixins.update(mixin_dict)
     for mixin_name, mixin_func in self.mixins.iteritems():
-      # XXX: Mixin methods will have to have the explicit 'self' as its first
-      # argument as we're setting it as a bound method in our klass.
-      # Pros would be that the user can access the UnderscoreObject's other
-      # methods thru self.
       # Used for OOP-Style calls.
-      setattr(self.klass, mixin_name, mixin_func)
+      setattr(self.klass, mixin_name, staticmethod(mixin_func))
       # Used for functional-style calls.
       setattr(self, mixin_name, self._proxy_mixin(mixin_name))
 
