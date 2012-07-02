@@ -98,4 +98,4 @@ or on twitter: [@jpanganiban][twitter]
 
 [underscore]: http://underscorejs.org/
 [mail]: mailto:me@jpanganiban.com
-[twitter]: me@jpanganiban.com
+[twitter]: http://www.twitter.com/jpanganiban
