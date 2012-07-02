@@ -4,23 +4,41 @@ import collections
 
 class UnderscoreObject(object):
 
-  seq = []
+  current_value = None
   args = None
   kwargs = None
+  is_chain = False
 
-  def __init__(self, *args, **kwargs):
-    if args:
-      if isinstance(args[0], collections.Iterable):
-        self.seq = args[0]
+  def __init__(self, value=None, is_chain=False, *args, **kwargs):
+    if value:
+      self.current_value = value
+
+    if is_chain:
+      self.is_chain = is_chain
 
     self.args = args
     self.kwargs = kwargs
 
+  def value(self):
+    return self.current_value
+
   def each(self, func):
-    return [func(item) for item in self.seq]
+    result = [func(item) for item in self.current_value]
+    if self.is_chain:
+      self.current_value = result
+      return self
+    return result
 
   def filter(self, func):
-    return [item for item in self.seq if func(item)]
+    result = [item for item in self.current_value if func(item)]
+    if self.is_chain:
+      self.current_value = result
+      return self
+    return result
+
+  def chain(self):
+    self.is_chain = True
+    return self
 
 
 class Underscore(object):
@@ -53,8 +71,11 @@ class Underscore(object):
       # Used for functional-style calls.
       setattr(self, mixin_name, self._proxy_mixin(mixin_name))
 
-  def each(self, seq, func):
-    return self.klass(seq).each(func)
+  def each(self, value, func):
+    return self.klass(value).each(func)
 
-  def filter(self, seq, func):
-    return self.klass(seq).filter(func)
+  def filter(self, value, func):
+    return self.klass(value).filter(func)
+
+  def chain(self, value):
+    return self.klass(value, is_chain=True)
