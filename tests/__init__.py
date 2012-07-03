@@ -56,6 +56,11 @@ class UnderscoreTestCase(unittest.TestCase):
     # Test return values
     self.assertEqual([i for i in self._.generator(my_seq)], my_seq)
     self.assertEqual([i for i in self._(my_seq).generator()], my_seq)
+    # Test chaining
+    self.assertEqual(self._.chain()
+        .generator(my_seq)
+        .each(lambda x: x + 1)
+        .value(), [2,3,4,5,6])
 
   def test_chaining(self):
     my_seq = [1,2,3,4,5]

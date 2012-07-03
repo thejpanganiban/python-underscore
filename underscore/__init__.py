@@ -53,8 +53,10 @@ class UnderscoreObject(UnderscoreObjectMeta):
   @method_wrapper
   def generator(self, value=None):
     self.current_value = self.current_value or value
-    for item in self.current_value:
-      yield item
+    def create_generator(value):
+      for item in value:
+        yield item
+    return create_generator(self.current_value)
 
   def value(self):
     return self.current_value
