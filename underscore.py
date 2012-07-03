@@ -1,6 +1,12 @@
 class UnderscoreObject(object):
 
   is_chain = False
+  methods = [
+        'each',
+        'filter',
+        'chain',
+        'all',
+      ]
 
   def __init__(self, value=None, *args, **kwargs):
     self.current_value = value
@@ -39,19 +45,13 @@ class Underscore(object):
 
   klass = None
   mixins = {}
-  methods = [
-        'each',
-        'filter',
-        'chain',
-        'all',
-      ]
 
   def __init__(self, underscore_class=UnderscoreObject):
     self.klass = underscore_class
-    self._set_methods()
+    self._set_methods(underscore_class)
 
-  def _set_methods(self):
-    for method_name in self.methods:
+  def _set_methods(self, underscore_class):
+    for method_name in underscore_class.methods:
       setattr(self, method_name, self._proxy_method(method_name))
 
   def _proxy_method(self, method_name):
