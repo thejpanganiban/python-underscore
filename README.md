@@ -76,6 +76,15 @@ Returns the list for each item that passes the Truth test
     _.all([1,2,False,None,True])
     > [1,2,True]
 
+###generator
+
+Returns an iterable generator object from a list
+
+    _.generator(sequence)
+
+    _.generator([1,2,3,4,5])
+    > <generator object>
+
 ###chain
 
 A method for chaining methods. (Wrap with parens to enable multi-lines)

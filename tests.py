@@ -1,4 +1,5 @@
 from underscore import Underscore
+import types
 import unittest
 
 
@@ -44,6 +45,17 @@ class UnderscoreTestCase(unittest.TestCase):
     self.assertEqual(self._.all(my_seq), [1,2,True])
     # Test OOP-style
     self.assertEqual(self._(my_seq).all(), [1,2,True])
+
+  def test_generator(self):
+    my_seq = [1,2,3,4,5]
+    self.assertTrue(self._.generator)
+    # Test functional-style if it returns a generator
+    self.assertTrue(isinstance(self._.generator(my_seq), types.GeneratorType))
+    # Test OOP-style if it returns a generator
+    self.assertTrue(isinstance(self._(my_seq).generator(), types.GeneratorType))
+    # Test return values
+    self.assertEqual([i for i in self._.generator(my_seq)], my_seq)
+    self.assertEqual([i for i in self._(my_seq).generator()], my_seq)
 
   def test_chaining(self):
     my_seq = [1,2,3,4,5]

@@ -45,6 +45,12 @@ class UnderscoreObject(UnderscoreObjectMeta):
     self.is_chain = True
     return self
 
+  @method_wrapper
+  def generator(self, value=None):
+    self.current_value = self.current_value or value
+    for item in self.current_value:
+      yield item
+
   def value(self):
     return self.current_value
 
