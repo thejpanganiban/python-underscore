@@ -1,12 +1,9 @@
 Python Underscore
 =================
 
-A python port of [Underscore.js][underscore].
-
-Build Status
-------------
-
 [![Build Status](https://secure.travis-ci.org/jpanganiban/python-underscore.png?branch=master)](http://travis-ci.org/jpanganiban/python-underscore)
+
+A python port of [Underscore.js][underscore].
 
 Current Status
 --------------
