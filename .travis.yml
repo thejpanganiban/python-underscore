@@ -1,6 +1,7 @@
 language: python
 python: 
+  - "2.5"
   - "2.6"
   - "2.7"
 install: python setup.py develop
-script: python test.py
+script: nosetests
