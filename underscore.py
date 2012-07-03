@@ -18,25 +18,30 @@ class UnderscoreObject(UnderscoreObjectMeta):
   def method_wrapper(method):
     UnderscoreObjectMeta.methods.append(method.__name__)
     def wrapper(*args, **kwargs):
-      return method(*args, **kwargs)
+      # Only prevent when the method is chain
+      if method.__name__ == 'chain':
+        return method(*args, **kwargs)
+      # Apply _chain_or_return method here so that we wouldn't
+      # have to mind it when we write methods.
+      return args[0]._chain_or_return(method(*args, **kwargs))
     return wrapper
 
   @method_wrapper
   def each(self, value=None, func=None):
     self.current_value = self.current_value or value
     func = value if callable(value) else func
-    return self._chain_or_return([func(item) for item in self.current_value])
+    return [func(item) for item in self.current_value]
 
   @method_wrapper
   def filter(self, value=None, func=None):
     self.current_value = self.current_value or value
     func = value if callable(value) else func
-    return self._chain_or_return([item for item in self.current_value if func(item)])
+    return [item for item in self.current_value if func(item)]
 
   @method_wrapper
   def all(self, value=None):
     self.current_value = self.current_value or value
-    return self._chain_or_return([item for item in self.current_value if item])
+    return [item for item in self.current_value if item]
 
   @method_wrapper
   def chain(self, value=None):
