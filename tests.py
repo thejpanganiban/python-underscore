@@ -37,6 +37,14 @@ class UnderscoreTestCase(unittest.TestCase):
     # Test OOP-style
     self.assertEqual(self._(my_seq).filter(lambda x: x % 2 == 0), [2,4])
 
+  def test_all(self):
+    my_seq = [1,2,False,None,True]
+    self.assertTrue(self._.all)
+    # Test functional-style
+    self.assertEqual(self._.all(my_seq), [1,2,True])
+    # Test OOP-style
+    self.assertEqual(self._(my_seq).all(), [1,2,True])
+
   def test_chaining(self):
     my_seq = [1,2,3,4,5]
     self.assertTrue(self._.chain)

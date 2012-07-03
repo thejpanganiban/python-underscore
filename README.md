@@ -62,6 +62,15 @@ A method for filtering items from the list
     _.filter([1,2,3,4,5], lambda x: x % 2 == 0)
     > [2,4]
 
+###all
+
+Returns the list for each item that passes the Truth test
+
+    _.all(sequence)
+
+    _.all([1,2,False,None,True])
+    > [1,2,True]
+
 ###chain
 
 A method for chaining methods. (Wrap with parens to enable multi-lines)

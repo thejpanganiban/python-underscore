@@ -21,6 +21,10 @@ class UnderscoreObject(object):
     func = value if callable(value) else func
     return self._chain_or_return([item for item in self.current_value if func(item)])
 
+  def all(self, value=None):
+    self.current_value = self.current_value or value
+    return self._chain_or_return([item for item in self.current_value if item])
+
   def value(self):
     return self.current_value
 
@@ -39,6 +43,7 @@ class Underscore(object):
         'each',
         'filter',
         'chain',
+        'all',
       ]
 
   def __init__(self, underscore_class=UnderscoreObject):
