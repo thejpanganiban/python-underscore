@@ -63,8 +63,8 @@ class Underscore(object):
       setattr(self, method_name, self._proxy_method(method_name))
 
   def _proxy_method(self, method_name):
-    def wrapper(*fargs, **fkwargs):
-      return getattr(self.klass(*fargs, **fkwargs), method_name)
+    def wrapper(*args, **kwargs):
+      return getattr(self.klass(*args, **kwargs), method_name)
     return wrapper()
 
   def __call__(self, *args):
