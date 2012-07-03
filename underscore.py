@@ -1,7 +1,3 @@
-import itertools
-import collections
-
-
 class UnderscoreObject(object):
 
   current_value = None
@@ -46,7 +42,6 @@ class Underscore(object):
   klass = None
   mixins = {}
 
-  # We can
   def __init__(self, underscore_class=UnderscoreObject):
     self.klass = underscore_class
 
@@ -62,8 +57,6 @@ class Underscore(object):
     return mixin_func
 
   def mixin(self, mixin_dict):
-    """Mixin
-    """
     self.mixins.update(mixin_dict)
     for mixin_name, mixin_func in self.mixins.iteritems():
       # Used for OOP-Style calls.
